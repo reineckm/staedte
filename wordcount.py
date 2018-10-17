@@ -17,7 +17,11 @@ for dir,_,_ in os.walk(start_dir):
 
 wordcount = {}
 out = open(out_file, "w")
+i = 0
+j = len(files)
 for f in files:
+	i = i + 1
+	print str(i) + " of " + str(j)
 	if not os.path.isfile(f):
 		continue
 	filePathClean = f[len(start_dir):]
