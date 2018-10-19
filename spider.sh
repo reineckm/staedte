@@ -4,10 +4,10 @@ export http_proxy=""
 export https_proxy=""
 
 # Alle zu synchronisierenden Seiten
-seiten=("www.berlin.de" "https://www.hamburg.de/buergerservice/" "www.gelsenkirchen.de/de/_meta/Buergerservice/" "www.koeln.de" "www.frankfurt.de/sixcms/detail.php?id=2717")
+seiten=("https://www.hamburg.de/buergerservice/" "www.gelsenkirchen.de/de/_meta/Buergerservice/")
 
 # Ort, an welchen die Seiten geschrieben werden sollen
-ziel=/home/developer/staedte/data
+ziel=/media/sf_E_DRIVE/files/
 
 # Wechsel zum Zielverzeichnis
 cd $ziel
@@ -15,7 +15,7 @@ cd $ziel
 # Für jede Seite im hintergrund einen wget crawl Prozess starten
 for element in "${seiten[@]}"
 do
-    wget -A.htm,.html,.aspx,.php -o /dev/null -r -p -U -N "$element" &
+    wget -r --no-check-certificate --no-parent -A.htm,.html,.aspx,.php -o /dev/null -p -U -N "$element" &
 done 
 
 # Jede Sekunde verbrauchten Speicherplatz anzeigen
